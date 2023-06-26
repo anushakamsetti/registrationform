@@ -12,9 +12,9 @@ class RegistrationForm extends Component {
   }
 
   onBlurLastName = () => {
-    const isValidLastName = this.isValidLastName()
+    const isValidLastName = this.isValidateLastName()
 
-    this.setState({showFirstNameError: !isValidLastName})
+    this.setState({showLastNameError: !isValidLastName})
   }
 
   onChangeLastName = event => {
@@ -51,7 +51,7 @@ class RegistrationForm extends Component {
   }
 
   onBlurFirstName = () => {
-    const isValidFirstName = this.isValidFirstName()
+    const isValidFirstName = this.isValidateFirstName()
 
     this.setState({showFirstNameError: !isValidFirstName})
   }
@@ -65,7 +65,7 @@ class RegistrationForm extends Component {
     })
   }
 
-  renderFirstField = () => {
+  renderFirstNameField = () => {
     const {firstNameInput, showFirstNameError} = this.state
     const className = showFirstNameError
       ? 'name-input-field error-field'
@@ -123,7 +123,7 @@ class RegistrationForm extends Component {
     return (
       <form className="form-container" onSubmit={this.onSubmitForm}>
         {this.renderFirstNameField()}
-        {showFirstNameError && <p className="error-message">Require</p>}
+        {showFirstNameError && <p className="error-message">Required</p>}
         {this.renderLastNameField()}
         {showLastNameError && <p className="error-message">Required</p>}
         <button type="submit" className="submit-button">
